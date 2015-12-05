@@ -20,7 +20,7 @@ describe('Lexer class', function() {
 
   describe('tokenize method', function() {
 
-    describe('Header component', function() {
+    describe('Header', function() {
 
       it('should return a valid "Heading" token', function() {
         var input = '# hello world';
@@ -32,20 +32,13 @@ describe('Lexer class', function() {
         expect(token.value).to.equal('hello world');
       });
 
-      it('should not accept a invalid heading', function() {
-        var input = '#abcshbschbs';
-        var result = lexer.tokenize(input);
-
-        expect(result.length).to.equal(0);
-      });
-
     });
 
     describe('Code block', function() {
 
       it('should match a code block by 4 spaces', function() {
 
-        var input  = '    function() {\n}';
+        var input  = '    function() {}';
         var result = lexer.tokenize(input);
         var token = result[0];
 
@@ -68,6 +61,19 @@ describe('Lexer class', function() {
 
         expect(result.length).to.equal(1);
         expect(token.type).to.equal('code fence');
+      });
+
+    });
+
+    describe('Paragraph', function() {
+
+      it('should match a paragraph', function() {
+        var input = 'this is a paragraph';
+        var result = lexer.tokenize(input);
+        var token = result[0];
+
+        expect(result.length).to.equal(1);
+        expect(token.type).to.equal('paragraph');
       });
 
     });
