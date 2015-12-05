@@ -56,7 +56,19 @@ describe('Lexer class', function() {
         expect(token.value[0]).to.equal('f');
       });
 
+    });
 
+    describe('Code fences', function() {
+
+      it('should match with three ` open tags and three ` closing tags', function(){
+
+        var input = '``` \n code block ```';
+        var result = lexer.tokenize(input);
+        var token = result[0];
+
+        expect(result.length).to.equal(1);
+        expect(token.type).to.equal('code fence');
+      });
 
     });
 
