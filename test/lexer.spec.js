@@ -41,6 +41,24 @@ describe('Lexer class', function() {
 
     });
 
+    describe('Code block', function() {
+
+      it('should match a code block by 4 spaces', function() {
+
+        var input  = '    function() {\n}';
+        var result = lexer.tokenize(input);
+        var token = result[0];
+
+        expect(result.length).to.equal(1);
+        expect(token.type).to.equal('code block');
+
+        // removes whitespace
+        expect(token.value[0]).to.equal('f');
+      });
+
+
+
+    });
 
   });
 
