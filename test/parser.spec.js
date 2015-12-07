@@ -56,4 +56,20 @@ describe('Parser class', function() {
     expect(result.children[1].children[0].type).to.equal('text');
   });
 
+  it('parse a code block', function() {
+    var result = parser._parseCode({ value: 'function(){}'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('codeBlock');
+    expect(result.value).to.equal('function(){}');
+    expect(result.children.length).to.equal(0);
+  });
+
+  it('parse a code fence', function() {
+    var result = parser._parseCodeFence({ value: 'function(){}'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('codeBlock');
+    expect(result.value).to.equal('function(){}');
+    expect(result.children.length).to.equal(0);
+  });
+
 });
