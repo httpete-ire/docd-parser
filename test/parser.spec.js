@@ -29,9 +29,17 @@ describe('Parser class', function() {
 
   it('should fetch the next token without increasing the tokenIndex', function() {
     var result = parser.peek();
-
     expect(result.type).to.equal('header');
     expect(parser.tokenIndex).to.equal(0);
+  });
+
+  describe('parse method', function() {
+
+    it('should return an AST', function() {
+      var result = parser.parse(parser.tokens);
+      expect(result).to.be.instanceOf(Tree);
+    });
+    
   });
 
 });
