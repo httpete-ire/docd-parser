@@ -3,6 +3,7 @@ var chai = require('chai');
 var expect = chai.expect;
 
 var Parser = require('./../lib/parser');
+var Tree = require('./../lib/tree.js');
 
 describe('Parser class', function() {
   'use strict';
@@ -17,6 +18,7 @@ describe('Parser class', function() {
   it('should be an instance of the Parser class', function() {
     expect(parser).to.be.instanceof(Parser);
     expect(parser.rules).to.be.an('object');
+    expect(parser.ast).to.be.instanceOf(Tree);
   });
 
   it('should fetch the next token in the stream and increase the tokenIndex', function() {
