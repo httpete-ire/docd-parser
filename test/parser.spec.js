@@ -4,6 +4,7 @@ var expect = chai.expect;
 
 var Parser = require('./../lib/parser');
 var Tree = require('./../lib/tree.js');
+var Node = require('./../lib/node');
 
 describe('Parser class', function() {
   'use strict';
@@ -39,7 +40,20 @@ describe('Parser class', function() {
       var result = parser.parse(parser.tokens);
       expect(result).to.be.instanceOf(Tree);
     });
-    
+
+  });
+
+  it('parse a header block', function() {
+    var result = parser._parseHeader({ value: 'this is a header __bold__', depth: 3});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('header');
+    expect(result.depth).to.equal(3);
+
+    expect(result.children.length).to.equal(2);
+
+    expect(result.children[0].type).to.equal('text');
+    expect(result.children[1].type).to.equal('strong');
+    expect(result.children[1].children[0].type).to.equal('text');
   });
 
 });
