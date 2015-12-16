@@ -20,7 +20,7 @@ describe('Lexer class', function() {
 
   describe('tokenize method', function() {
 
-    describe('Header', function() {
+    describe('heading', function() {
 
       it('should return a valid "Heading" token', function() {
         var input = '# hello world';
@@ -28,7 +28,7 @@ describe('Lexer class', function() {
         var token = result[0];
 
         expect(result.length).to.equal(1);
-        expect(token.type).to.equal('Heading');
+        expect(token.type).to.equal('header');
         expect(token.value).to.equal('hello world');
       });
 
