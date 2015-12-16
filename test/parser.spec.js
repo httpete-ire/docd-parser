@@ -72,4 +72,11 @@ describe('Parser class', function() {
     expect(result.children.length).to.equal(0);
   });
 
+  it('parse a paragraph block', function() {
+    var result = parser._parseParagraph({value: 'this is a __asdcnadsjn__'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('paragraph');
+    expect(result.children.length).to.be.above(0);
+  });
+
 });
