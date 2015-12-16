@@ -79,4 +79,19 @@ describe('Parser class', function() {
     expect(result.children.length).to.be.above(0);
   });
 
+  it('parse a table', function() {
+    var result = parser._parseTable({
+      type: 'table',
+      headers: ['name', 'age'],
+      body: [
+        ['pete', '29'],
+        ['max', '27']
+      ]
+    });
+
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('table');
+    // console.log(result);
+  });
+
 });
