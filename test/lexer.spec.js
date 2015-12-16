@@ -78,6 +78,17 @@ describe('Lexer class', function() {
 
     });
 
+    describe('Horizontal Rule', function() {
+      it('it should match a horizontal rule', function() {
+        var input = '--------';
+        var result = lexer.tokenize(input);
+        var token = result[0];
+
+        expect(result.length).to.equal(1);
+        expect(token.type).to.equal('horizontal rule');
+      });
+    });
+
   });
 
 });
