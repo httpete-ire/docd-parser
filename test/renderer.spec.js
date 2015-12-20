@@ -21,4 +21,9 @@ describe('renderer class', function() {
     expect(result).to.equal('hello world');
   });
 
+  it('should render a horizontal rule', function() {
+    var result = renderer._renderHorizontalRule();
+    expect(result).to.equal('<hr />\n');
+  });
+
 });
