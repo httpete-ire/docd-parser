@@ -2,14 +2,17 @@
 var chai = require('chai');
 var expect = chai.expect;
 var Renderer = require('./../lib/renderer.js');
+var Parser = require('./../lib/parser');
 
 describe('renderer class', function() {
   'use strict';
 
   var renderer;
+  var parser;
 
   beforeEach(function() {
     renderer = new Renderer();
+    parser = new Parser();
   });
 
   it('should parse a text node', function() {
@@ -24,6 +27,12 @@ describe('renderer class', function() {
   it('should render a horizontal rule', function() {
     var result = renderer._renderHorizontalRule();
     expect(result).to.equal('<hr />\n');
+  });
+
+  it('should render a paragraph element', function() {
+    var input = parser._parseParagraph({value: 'hello world'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p>hello world</p>');
   });
 
 });
