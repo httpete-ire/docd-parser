@@ -94,4 +94,13 @@ describe('Parser class', function() {
     // console.log(result);
   });
 
+  it('parse a horizontal rule', function() {
+    var result = parser._parseHorizontalRule({
+      type: 'horizontal rule'
+    });
+
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('horizontal rule');
+  });
+
 });
