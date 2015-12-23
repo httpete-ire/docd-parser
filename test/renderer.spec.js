@@ -54,4 +54,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<p><strong>hello world</strong></p>');
   });
 
+  it('should render an anchor element (link)', function() {
+    var input = parser._parseParagraph({value: '[google](www.google.ie "Irish google")'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><a href="www.google.ie" title="Irish google">google</a></p>');
+  });
+
 });
