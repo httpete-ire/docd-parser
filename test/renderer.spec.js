@@ -48,4 +48,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<table>\n<thead><th>name</th>\n<th>age</th>\n<th>gender</th>\n</thead>\n<tbody><tr><td>pete</td>\n<td>29</td>\n<td>male</td>\n</tr>\n<tr><td>max</td>\n<td>27</td>\n<td>male</td>\n</tr>\n</tbody>\n</table>\n');
   });
 
+  it('should render a strong element', function() {
+    var input = parser._parseParagraph({value: '__hello world__'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><strong>hello world</strong></p>');
+  });
+
 });

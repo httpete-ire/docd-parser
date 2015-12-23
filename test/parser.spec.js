@@ -13,7 +13,7 @@ describe('Parser class', function() {
 
   beforeEach(function() {
     parser = new Parser();
-    parser.tokens = [{ type: 'header' }, { type: 'list' }, { type: 'code block'}];
+    parser.tokens = [{ type: 'header' }, { type: 'code block'}];
   });
 
   it('should be an instance of the Parser class', function() {
