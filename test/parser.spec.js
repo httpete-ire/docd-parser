@@ -103,4 +103,18 @@ describe('Parser class', function() {
     expect(result.type).to.equal('horizontal rule');
   });
 
+  it('parse a emphasis tag', function() {
+    var result = parser._parseParagraph({value: '_asdcnadsjn_'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.children[0].type).to.equal('em');
+  });
+
+  it('parse a link', function() {
+    var result = parser._parseParagraph({value: '[httpete](www.httpete "httpete")'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.children[0].type).to.equal('link');
+    expect(result.children[0].href).to.equal('www.httpete');
+    expect(result.children[0].title).to.equal('httpete');
+  });
+
 });
