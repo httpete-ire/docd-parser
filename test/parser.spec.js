@@ -117,4 +117,12 @@ describe('Parser class', function() {
     expect(result.children[0].title).to.equal('httpete');
   });
 
+  it('parse a blockquote', function() {
+    var result = parser._parseBlockquote({value: '__hello world__'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.type).to.equal('blockquote');
+    expect(result.children[0].type).to.equal('paragraph');
+    expect(result.children[0].children[0].type).to.equal('strong');
+  });
+
 });

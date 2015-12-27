@@ -100,6 +100,16 @@ describe('Lexer class', function() {
       });
     });
 
+    describe('Blockquote', function() {
+      it('should match a blockquote', function() {
+        var input = '> hello world';
+        var result = lexer.tokenize(input);
+        var token = result[0];
+        expect(token.type).to.equal('blockquote');
+        expect(token.value).to.equal('hello world');
+      });
+    });
+
   });
 
 });
