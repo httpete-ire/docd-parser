@@ -32,7 +32,7 @@ describe('renderer class', function() {
   it('should render a paragraph element', function() {
     var input = parser._parseParagraph({value: 'hello world'});
     var result = renderer._renderParagraph(input);
-    expect(result).to.equal('<p>hello world</p>');
+    expect(result).to.equal('<p>hello world</p>\n');
   });
 
   it('should render a table element', function() {
@@ -46,6 +46,24 @@ describe('renderer class', function() {
     });
     var result = renderer._renderTable(input);
     expect(result).to.equal('<table>\n<thead><th>name</th>\n<th>age</th>\n<th>gender</th>\n</thead>\n<tbody><tr><td>pete</td>\n<td>29</td>\n<td>male</td>\n</tr>\n<tr><td>max</td>\n<td>27</td>\n<td>male</td>\n</tr>\n</tbody>\n</table>\n');
+  });
+
+  it('should render a strong element', function() {
+    var input = parser._parseParagraph({value: '__hello world__'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><strong>hello world</strong></p>\n');
+  });
+
+  it('should render an anchor element (link)', function() {
+    var input = parser._parseParagraph({value: '[google](www.google.ie "Irish google")'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><a href="www.google.ie" title="Irish google">google</a></p>\n');
+  });
+
+  it('should render a blockquote', function() {
+    var input = parser._parseBlockquote({value: '__hello world__'});
+    var result = renderer._renderBlockquote(input);
+    expect(result).to.equal('<blockquote>\n<p><strong>hello world</strong></p>\n</blockquote>\n');
   });
 
 });
