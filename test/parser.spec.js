@@ -125,4 +125,10 @@ describe('Parser class', function() {
     expect(result.children[0].children[0].type).to.equal('strong');
   });
 
+  it('parse a code tag', function() {
+    var result = parser._parseParagraph({value: '`this`'});
+    expect(result).to.be.instanceOf(Node);
+    expect(result.children[0].type).to.equal('codeSpan');
+  });
+
 });
