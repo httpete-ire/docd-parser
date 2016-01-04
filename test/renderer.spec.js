@@ -78,4 +78,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<pre><code>function() { return this; }</code></pre>');
   });
 
+  it('should render an emphasis tag', function() {
+    var input = parser._parseParagraph({value: '_hello_ world'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><em>hello</em> world</p>\n');
+  });
+
 });
