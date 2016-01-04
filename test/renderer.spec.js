@@ -66,4 +66,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<blockquote>\n<p><strong>hello world</strong></p>\n</blockquote>\n');
   });
 
+  it('should render a header', function() {
+    var input = parser._parseHeader({ value: 'this is a header', depth: 3});
+    var result = renderer._renderHeader(input);
+    expect(result).to.equal('<h3>this is a header</h3>\n');
+  });
+
 });
