@@ -72,4 +72,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<h3>this is a header</h3>\n');
   });
 
+  it('should render a code block', function() {
+    var input = parser._parseCode({ value: 'function() { return this; }'});
+    var result = renderer._renderCodeBlock(input);
+    expect(result).to.equal('<pre><code>function() { return this; }</code></pre>');
+  });
+
 });
