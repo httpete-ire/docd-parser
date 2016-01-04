@@ -72,4 +72,16 @@ describe('renderer class', function() {
     expect(result).to.equal('<h3>this is a header</h3>\n');
   });
 
+  it('should render a code block', function() {
+    var input = parser._parseCode({ value: 'function() { return this; }'});
+    var result = renderer._renderCodeBlock(input);
+    expect(result).to.equal('<pre><code>function() { return this; }</code></pre>');
+  });
+
+  it('should render an emphasis tag', function() {
+    var input = parser._parseParagraph({value: '_hello_ world'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p><em>hello</em> world</p>\n');
+  });
+
 });
