@@ -84,4 +84,10 @@ describe('renderer class', function() {
     expect(result).to.equal('<p><em>hello</em> world</p>\n');
   });
 
+  it('should render an inline code span', function() {
+    var input = parser._parseParagraph({value: 'hello `world`'});
+    var result = renderer._renderParagraph(input);
+    expect(result).to.equal('<p>hello <code>world</code></p>\n');
+  });
+
 });
