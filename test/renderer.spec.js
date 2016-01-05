@@ -75,7 +75,7 @@ describe('renderer class', function() {
   it('should render a code block', function() {
     var input = parser._parseCode({ value: 'function() { return this; }'});
     var result = renderer._renderCodeBlock(input);
-    expect(result).to.equal('<pre><code>function() { return this; }</code></pre>');
+    expect(result).to.equal('<pre><code>function() { return this; }</code></pre>\n');
   });
 
   it('should render an emphasis tag', function() {
