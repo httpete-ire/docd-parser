@@ -110,6 +110,37 @@ describe('Lexer class', function() {
       });
     });
 
+    describe('List', function() {
+
+      var input = '* hello world \n  * test';
+
+      it('should insert a list_start token', function() {
+        var result = lexer.tokenize(input);
+        var token = result[0];
+        expect(token.type).to.equal('list_start');
+        expect(token.ordered).to.equal(false);
+      });
+
+      it('should insert a item_start', function() {
+        var result = lexer.tokenize(input);
+        var token = result[1];
+        expect(token.type).to.equal('item_start');
+      });
+
+      it('should parse the list item value', function() {
+        var result = lexer.tokenize(input);
+        var token = result[2];
+        expect(token.type).to.equal('paragraph');
+      });
+
+      it('should insert a nested list', function() {
+        var result = lexer.tokenize(input);
+        var token = result[3];
+        expect(token.type).to.equal('list_start');
+      });
+
+    });
+
   });
 
 });
