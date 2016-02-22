@@ -3,6 +3,7 @@ var chai = require('chai');
 var expect = chai.expect;
 
 var Parser = require('./../lib/parser');
+var Lexer = require('./../lib/lexer');
 var Tree = require('./../lib/tree.js');
 var Node = require('./../lib/node');
 
@@ -10,6 +11,7 @@ describe('Parser class', function() {
   'use strict';
 
   var parser;
+  var lexer = new Lexer();
 
   beforeEach(function() {
     parser = new Parser();
@@ -129,6 +131,15 @@ describe('Parser class', function() {
     var result = parser._parseParagraph({value: '`this`'});
     expect(result).to.be.instanceOf(Node);
     expect(result.children[0].type).to.equal('codeSpan');
+  });
+
+  it('parse a list', function() {
+    var tokens = lexer.tokenize('1. _hello_ [world](www.goggle.com)\n  * wow');
+    var result = parser.parse(tokens).root;
+    expect(result.children[0].type).to.equal('ordered list');
+    expect(result.children[0].children[0].type).to.equal('list item');
+    expect(result.children[0].children[0].children[0].type).to.equal('paragraph');
+    expect(result.children[0].children[0].children[1].type).to.equal('unordered list');
   });
 
 });
