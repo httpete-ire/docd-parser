@@ -1,6 +1,6 @@
 {
   "name": "docd-parser",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "a markdown parser for the docd platform",
   "main": "lib/docdparser.js",
   "directories": {
